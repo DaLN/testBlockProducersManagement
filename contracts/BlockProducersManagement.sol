@@ -102,13 +102,13 @@ contract BlockProducersManagement {
 
           /// Vote for a candidate to be a Block Producer on a specific chain.
           function voteFor(address chain, address choice) public
-          candidateExists(chain, choice) hasNotVoted(chain, msg.sender) {
-            ERC20Coin coinContract = ERC20Coin(coinContracts[chain]);
-            uint256 weight = coinContract.balanceOf(msg.sender);
-            weight += delegation[chain][msg.sender];
-            votes[chain][msg.sender] = Vote(msg.sender, choice, weight, true);
-            votersVotedAddresses.push(msg.sender);
-            voted[chain][msg.sender] = true;
+            candidateExists(chain, choice) hasNotVoted(chain, msg.sender) {
+              ERC20Coin coinContract = ERC20Coin(coinContracts[chain]);
+              uint256 weight = coinContract.balanceOf(msg.sender);
+              weight += delegation[chain][msg.sender];
+              votes[chain][msg.sender] = Vote(msg.sender, choice, weight, true);
+              votersVotedAddresses.push(msg.sender);
+              voted[chain][msg.sender] = true;
           }
 
           /// Delegate your vote to the voter $(to).
